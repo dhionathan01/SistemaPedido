@@ -21,6 +21,11 @@
                 'controller' => 'AppController',
                 'action' => 'menu_principal'
             );
+            $routes['cadastrar'] = array(
+                'route' => '/cadastrar',
+                'controller' => 'IndexController',
+                'action' => 'cadastrar'
+            );
 
             $this->setRoutes($routes);
         }
