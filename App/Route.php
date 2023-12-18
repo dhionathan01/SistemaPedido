@@ -46,6 +46,11 @@
                 'controller' => 'PedidoController',
                 'action' => 'listarPedidos'
             );
+            $routes['logout'] = array(
+                'route' => '/logout',
+                'controller' => 'AuthController',
+                'action' => 'sair'
+            );
 
             $this->setRoutes($routes);
         }
