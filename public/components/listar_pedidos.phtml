@@ -28,7 +28,7 @@
                         </thead>
                         <tbody>
                             <?php foreach ($this->pedidos as $pedido) : ?>
-                                <tr>
+                                <tr id="pedido_<?=$pedido['id']?>">
                                     <td><?= $pedido['id'] ?></td>
                                     <td><?= $pedido['nome'] ?></td>
                                     <td><?= $pedido['created_at'] ?></td>

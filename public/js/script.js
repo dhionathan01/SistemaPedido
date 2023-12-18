@@ -76,16 +76,37 @@ function updatePedido(id) {
     })
 }
 function excluirPedido(id) {
-    $.ajax({
-        url: "/excluirPedido",
-        method: 'POST',
-        data: {
-            id_pedido: id
-        },
-        success: (response) => {
-           console.log(response)
-        },
-    })
+    Swal.fire({
+        title: 'Você tem certeza que deseja excluir?',
+        text: 'Esta ação não pode ser desfeita!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sim',
+        cancelButtonText: 'Não'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            url: "/excluirPedido",
+            method: 'POST',
+            data: {
+                id_pedido: id
+            },
+            success: (response) => {
+                $(`#pedido_${id}`).fadeOut(() => {
+                    $(`#pedido_${id}`).remove()
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Pedido pedido excluído com Sucesso!',
+                        confirmButtonText: 'OK'
+                      });
+               })
+            },
+        })
+        }
+      });
+   
 }
 
 function enviaPedido() {
