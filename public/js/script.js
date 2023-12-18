@@ -1,3 +1,11 @@
+$(document).ready(function() {
+    setTimeout(function() {
+        $('.loading-container').fadeOut('slow', function() {
+          $(this).remove();
+        });
+      }, 5000);
+  });
+
 function realizarPedido() {
     $.ajax({
         url: "/exibirFormulario",
