@@ -31,6 +31,11 @@
                 'controller' => 'IndexController',
                 'action' => 'registrar'
             );
+            $routes['exibirFormulario'] = array(
+                'route' => '/exibirFormulario',
+                'controller' => 'PedidoController',
+                'action' => 'exibirFormulario'
+            );
 
             $this->setRoutes($routes);
         }
