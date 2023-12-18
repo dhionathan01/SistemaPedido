@@ -22,9 +22,17 @@ class PedidoController extends Action{
         $endereco->__set('cidade', $cidade);
         $endereco->__set('bairro', $bairro);
         $endereco->__set('rua', $rua);
-        $endereco_id = $endereco->salvar();
-        
+        $endereco_object = $endereco->salvar();
+        $endereco_id = $endereco_object->__get('id');
+
         $pedido = Container::getModel('Pedido');
+        $pedido->__set('user_id', $user_id);
+        $pedido->__set('endereco_id', $endereco_id);
+        $pedido_object = $pedido->salvar();
+        echo '<pre>';
+        print_r($pedido_object);
+        echo '</pre>';
+        
     }
 }
 ?>

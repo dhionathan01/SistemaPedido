@@ -31,7 +31,7 @@ class Endereco extends Model
         $stmt->bindValue(':bairro', $this->__get('bairro'));
         $stmt->bindValue(':rua', $this->__get('rua'));
         $stmt->execute();
-
+        $this->id = $this->db->lastInsertId();
         return $this;
     }
 }
