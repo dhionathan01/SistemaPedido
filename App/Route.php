@@ -10,6 +10,18 @@
                 'controller' => 'IndexController',
                 'action' =>  'index'
             );
+
+            $routes['autenticar'] = array(
+                'route' => '/autenticar',
+                'controller' => 'AuthController',
+                'action' => 'autenticar'
+            );
+            $routes['menu_principal'] = array(
+                'route' => '/menu_principal',
+                'controller' => 'AppController',
+                'action' => 'menu_principal'
+            );
+
             $this->setRoutes($routes);
         }
     }
