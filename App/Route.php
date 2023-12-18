@@ -26,6 +26,11 @@
                 'controller' => 'IndexController',
                 'action' => 'cadastrar'
             );
+            $routes['registrar'] = array(
+                'route' => '/registrar',
+                'controller' => 'IndexController',
+                'action' => 'registrar'
+            );
 
             $this->setRoutes($routes);
         }
