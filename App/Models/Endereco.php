@@ -24,7 +24,6 @@ class Endereco extends Model
     {
         $sql = "INSERT INTO enderecos (cep, uf, cidade, bairro, rua) VALUES (:cep, :uf, :cidade, :bairro, :rua)";
         $stmt = $this->db->prepare($sql);
-        echo $sql;
         $stmt->bindValue(':cep', $this->__get('cep'));
         $stmt->bindValue(':uf', $this->__get('uf'));
         $stmt->bindValue(':cidade', $this->__get('cidade'));
