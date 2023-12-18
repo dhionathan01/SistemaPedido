@@ -100,4 +100,16 @@ class Pedido extends Model
         $stmt->execute();
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
+    public function updatePedidoById($id)
+    {
+        $sql = "UPDATE
+                    pedidos
+                SET
+                    id = id
+                WHERE pedidos.id=:id
+                ";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+    }
 }

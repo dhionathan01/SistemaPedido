@@ -75,5 +75,24 @@ class PedidoController extends Action{
         // Renderiza a visualização
         include("../public/components/pedido_detalhes.phtml");
     }
+    public function updatePedido()
+    { 
+        session_start();
+        if(empty($_SESSION['id']) OR !isset($_SESSION['id']) OR  empty($_SESSION['nome']) OR !isset($_SESSION['nome'])){
+            header('Location: /?login=erro');
+        }
+        $pedido = Container::getModel('Pedido');
+        $endereco = Container::getModel('Endereco');
+        extract($_POST);
+        $pedido = $pedido->updatePedidoById($_POST['id_pedido']);
+        $endereco->__set('id', $endereco_id);
+        $endereco->__set('cep', $cep);
+        $endereco->__set('uf', $uf);
+        $endereco->__set('cidade', $cidade);
+        $endereco->__set('bairro', $bairro);
+        $endereco->__set('rua', $rua);
+        $endereco = $endereco->updateEnderecoById();
+       
+    }
 }
 ?>

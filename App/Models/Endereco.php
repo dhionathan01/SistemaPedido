@@ -33,5 +33,25 @@ class Endereco extends Model
         $this->id = $this->db->lastInsertId();
         return $this;
     }
+    public function updateEnderecoById()
+    {
+        $sql = "UPDATE
+                    enderecos
+                SET
+                    cep = :cep,
+                    uf = :uf,
+                    cidade = :cidade,
+                    bairro = :bairro,
+                    rua = :rua
+                    WHERE id = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':id', $this->__get('id'));
+        $stmt->bindValue(':cep', $this->__get('cep'));
+        $stmt->bindValue(':uf', $this->__get('uf'));
+        $stmt->bindValue(':cidade', $this->__get('cidade'));
+        $stmt->bindValue(':bairro', $this->__get('bairro'));
+        $stmt->bindValue(':rua', $this->__get('rua'));
+        $stmt->execute();
+    }
 }
 ?>

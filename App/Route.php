@@ -56,6 +56,11 @@
                 'controller' => 'AuthController',
                 'action' => 'sair'
             );
+            $routes['updatePedido'] = array(
+                'route' => '/updatePedido',
+                'controller' => 'PedidoController',
+                'action' => 'updatePedido'
+            );
 
             $this->setRoutes($routes);
         }

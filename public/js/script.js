@@ -35,14 +35,43 @@ function listarPedido() {
         },
     })
 }
-function visualizarPedido(id) {
+function abrirPedido(id) {
     $.ajax({
         url: "/visualizarPedido",
         method: 'get',
         data: {id:id},
         success: (component) => {
+            $('.modal-backdrop').remove();
+            $('#produtoModal').modal('hide');
+            $('#pedidoModal').modal('hide');
+            $('#painel_realizar_pedido').html('');
+            $('#painel_listar_pedido').html('');
             $('#painel_visualizar_pedido').html(component);
             $('#visualizarPedidoModal').modal('show');
+        },
+    })
+}
+function updatePedido(id) {
+    let endereco_id = $('#endereco_id').val();
+    let cep = $('#cep').val();
+    let uf = $('#uf').val();
+    let cidade = $('#cidade').val();
+    let bairro = $('#bairro').val();
+    let rua = $('#rua').val();
+    $.ajax({
+        url: "/updatePedido",
+        method: 'POST',
+        data: {
+            id_pedido: id,
+            endereco_id: endereco_id,
+            cep: cep,
+            uf: uf,
+            cidade: cidade,
+            bairro: bairro,
+            rua: rua
+        },
+        success: (response) => {
+           console.log(response)
         },
     })
 }

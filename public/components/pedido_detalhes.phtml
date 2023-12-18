@@ -23,16 +23,22 @@
                         <div class="form-group">
                             <label for="pedidoId">ID do Pedido:</label>
                             <input type="text" class="form-control" id="pedidoId" value="<?=$pedido['id']?>" readonly>
+                            <input type="hidden" name="endereco_id" id="endereco_id" value=<?=$pedido['endereco_id']?>>
                         </div>
 
                         <div class="form-group">
                             <label for="usuarioNome">Nome do Usuário:</label>
                             <input type="text" class="form-control" id="usuarioNome" value="<?=$pedido['nome']?>" readonly>
                         </div>
-
+                        
                         <div class="form-group">
-                            <label for="cep">CEP:</label>
-                            <input type="text" class="form-control" id="cep" value="<?=$pedido['cep']?>" >
+                            <label for="cep">CEP</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="cep" value="<?=$pedido['cep']?>"  maxlength="9" id="cep" placeholder="Digite o CEP" required>
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" onclick="obterInformacoesCEP()">Preencher Endereço</button>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -64,11 +70,12 @@
                             <label for="dataAtualizacao">Última Atualização:</label>
                             <input type="text" class="form-control" id="dataAtualizacao" value="<?=$pedido['updated_at']?>" readonly>
                         </div>
-
+                        <div class="d-flex justify-content-between">
+                            <a data-dismiss="modal" href="#" class="btn-sm btn-primary"><span class="fa fa-arrow-left"></span> Voltar</a>
+                            <a href="#" class="btn-sm btn-danger" onclick="excluirPedido(<?=$pedido['id']?>)"><span class="fa fa-trash"></span> Excluir</a>
+                            <a  href="#" class="btn-sm btn-primary" onclick="updatePedido(<?=$pedido['id']?>)"><span class="fa fa-undo"></span> Atualizar</a>
+                        </div>
                         <!-- Botão para Voltar ou qualquer outra ação desejada -->
-                        <a data-dismiss="modal" href="#" class="btn btn-primary"> Voltar</a>
-                        <a data-dismiss="modal" href="#" class="btn btn-primary">Excluir</a>
-                        <a data-dismiss="modal" href="#" class="btn btn-primary">Atualizar</a>
                     </form>
                 </div>
             </div>
@@ -78,5 +85,11 @@
 <script>
     $(document).ready(() => {
         $('[data-toggle="tooltip"]').tooltip();
+        $(document).on('input','#cep' ,  function () {
+        console.log('entrei aq')
+        var valorAtual = $(this).val();
+        var valorMascarado = mascaraCEP(valorAtual);
+        $(this).val(valorMascarado);
+    });
     })
 </script>
