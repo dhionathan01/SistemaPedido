@@ -12,6 +12,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://kit.fontawesome.com/21274871c9.js" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
+    <div id="dados_session">
+        <input type="hidden" id="nome" value="<?=$_SESSION['nome']?>">
+        <input type="hidden" id="user_id" value="<?=$_SESSION['id']?>">
+    </div>
 </head>
 <body>
     <?= $this->content() ?>

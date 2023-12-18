@@ -12,7 +12,7 @@
                     <form>
                         <div class="form-group">
                             <label for="nomeCliente">Nome do Cliente</label>
-                            <input type="text" class="form-control" id="nomeCliente" placeholder="Digite o nome do cliente" required>
+                            <input readonly type="text" class="form-control" value="<?=$_POST['nome_cliente']?>" id="nome_cliente" placeholder="Digite o nome do cliente" required>
                         </div>
                         <div class="form-group">
                             <label for="cep">CEP</label>

@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     setTimeout(function() {
         $('.loading-container').fadeOut('slow', function() {
           $(this).remove();
@@ -7,10 +7,15 @@ $(document).ready(function() {
   });
 
 function realizarPedido() {
+    let user_id = $('#user_id').val();
+    let nome = $('#nome').val();
     $.ajax({
         url: "/exibirFormulario",
         method: 'post',
-        data: {},
+        data: {
+            user_id: user_id,
+            nome_cliente: nome
+        },
         success: (component) => {
             $('#painel_cadastro_produto').html(component);
             $('#produtoModal').modal('show');
