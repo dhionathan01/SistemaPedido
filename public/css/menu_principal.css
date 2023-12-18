@@ -1,0 +1,21 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.menu-card {
+    width: 18rem;
+    margin: 20px;
+}
+
+.bg-icon {
+    background-position: center;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    font-size: 3em;
+    /* Ajuste o tamanho do ícone conforme necessário */
+}
