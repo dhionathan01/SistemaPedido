@@ -1,0 +1,29 @@
+<style>
+    #tabela-pedidos.tabela-pedidos {
+            max-height: 300px; /* Ajuste conforme necessário */
+            overflow-y: auto;
+        }
+</style>
+<div class="container mt-4">
+    <h2>Listagem de Pedidos</h2>
+
+    <!-- Tabela de Pedidos com Scroll -->
+    <table id="tabela-pedidos" class="table tabela-pedidos">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Destinatário</th>
+                <th>Data do Pedido</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($this->pedidos as $pedido) : ?>
+                <tr>
+                    <td><?= $pedido['id'] ?></td>
+                    <td><?= $pedido['nome'] ?></td>
+                    <td><?= $pedido['created_at'] ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>

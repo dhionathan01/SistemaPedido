@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use DHF\Model\Model;
@@ -11,11 +12,13 @@ class Pedido extends Model
     private $created_at;
     private $updated_at;
 
-    public function __get($atributo){
+    public function __get($atributo)
+    {
         return $this->$atributo;
     }
 
-    public function __set($atributo, $valor){
+    public function __set($atributo, $valor)
+    {
         $this->$atributo = $valor;
     }
 
@@ -37,5 +40,37 @@ class Pedido extends Model
         $this->created_at = $created_at;
         return $this;
     }
+
+    public function getAll()
+    {
+        $sql = "SELECT  
+                    id,
+                    user_id,
+                    endereco_id,
+                    created_at,
+                    updated_at
+
+                FROM  pedidos";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+    public function getAllView()
+    {
+        $sql = "SELECT  
+                    pedidos.id,
+                    pedidos.user_id,
+                    pedidos.endereco_id,
+                    pedidos.created_at,
+                    pedidos.updated_at,
+                    usuarios.nome
+
+                FROM
+                    pedidos
+                LEFT JOIN usuarios ON usuarios.id = pedidos.user_id
+                ";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }
-?>

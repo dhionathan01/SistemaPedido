@@ -17,8 +17,20 @@ function realizarPedido() {
             nome_cliente: nome
         },
         success: (component) => {
-            $('#painel_cadastro_produto').html(component);
+            $('#painel_realizar_pedido').html(component);
             $('#produtoModal').modal('show');
+        },
+    })
+}
+
+function listarPedido() {
+    $.ajax({
+        url: "/listarPedidos",
+        method: 'post',
+        data:{},
+        success: (component) => {
+            $('#painel_listar_pedido').html(component);
+            $('#pedidoModal').modal('show');
         },
     })
 }
@@ -41,8 +53,9 @@ function enviaPedido(){
           bairro:bairro,
           rua:rua
       },
-      success:(response)=>{
-          console.log(response)
+      success:(pedido)=>{
+          let pedidoJson = JSON.parse(pedido);
+          console.log(pedidoJson);
       },
   });
 }

@@ -41,6 +41,11 @@
                 'controller' => 'PedidoController',
                 'action' => 'realizarPedido'
             );
+            $routes['listarPedidos'] = array(
+                'route' => '/listarPedidos',
+                'controller' => 'PedidoController',
+                'action' => 'listarPedidos'
+            );
 
             $this->setRoutes($routes);
         }
