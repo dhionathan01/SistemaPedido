@@ -22,6 +22,30 @@ function realizarPedido() {
         },
     })
 }
+
+function enviaPedido(){
+  let user_id = $('#user_id').val();
+  let cep = $('#cep').val();
+  let uf = $('#uf').val();
+  let cidade = $('#cidade').val();
+  let bairro = $('#bairro').val();
+  let rua = $('#rua').val();
+  $.ajax({
+      url:"/realizarPedido",
+      method: "POST",
+      data:{
+          user_id: user_id,
+          cep:cep,
+          uf:uf,
+          cidade:cidade,
+          bairro:bairro,
+          rua:rua
+      },
+      success:(response)=>{
+          console.log(response)
+      },
+  });
+}
 function obterInformacoesCEP() {
     try {
         let cep = $('#cep').val();
