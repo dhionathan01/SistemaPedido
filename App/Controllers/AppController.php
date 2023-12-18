@@ -13,7 +13,7 @@ class AppController extends Action {
 
     public function validaAutenticacao(){
         session_start();
-        if(empty($_SESSION['nome']) OR !isset($_SESSION['nome'])){
+        if(empty($_SESSION['id']) OR !isset($_SESSION['id']) OR  empty($_SESSION['nome']) OR !isset($_SESSION['nome'])){
             header('Location: /?login=erro');
         }
     }
