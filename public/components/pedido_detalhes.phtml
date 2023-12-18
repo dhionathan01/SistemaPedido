@@ -1,0 +1,82 @@
+<style>
+    #tabela-pedidos.tabela-pedidos {
+        max-height: 300px;
+        /* Ajuste conforme necessário */
+        overflow-y: auto;
+    }
+</style>
+<div class="modal fade" id="visualizarPedidoModal" tabindex="-1" role="dialog" aria-labelledby="visualizarPedidoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="visualizarPedidoModalLabel">Detalhes Pedido</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container mt-4">
+                    <h2>Detalhes do Pedido</h2>
+
+                    <form>
+                        <!-- Informações do Pedido -->
+                        <div class="form-group">
+                            <label for="pedidoId">ID do Pedido:</label>
+                            <input type="text" class="form-control" id="pedidoId" value="<?=$pedido['id']?>" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="usuarioNome">Nome do Usuário:</label>
+                            <input type="text" class="form-control" id="usuarioNome" value="<?=$pedido['nome']?>" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cep">CEP:</label>
+                            <input type="text" class="form-control" id="cep" value="<?=$pedido['cep']?>" >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="uf">UF:</label>
+                            <input type="text" class="form-control" id="uf" value="<?=$pedido['uf']?>" >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cidade">Cidade:</label>
+                            <input type="text" class="form-control" id="cidade" value="<?=$pedido['cidade']?>" >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bairro">Bairro:</label>
+                            <input type="text" class="form-control" id="bairro" value="<?=$pedido['bairro']?>" >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rua">Rua:</label>
+                            <input type="text" class="form-control" id="rua" value="<?=$pedido['rua']?>" >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dataPedido">Data do Pedido:</label>
+                            <input type="text" class="form-control" id="dataPedido" value="<?=$pedido['created_at']?>" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dataAtualizacao">Última Atualização:</label>
+                            <input type="text" class="form-control" id="dataAtualizacao" value="<?=$pedido['updated_at']?>" readonly>
+                        </div>
+
+                        <!-- Botão para Voltar ou qualquer outra ação desejada -->
+                        <a data-dismiss="modal" href="#" class="btn btn-primary"> Voltar</a>
+                        <a data-dismiss="modal" href="#" class="btn btn-primary">Excluir</a>
+                        <a data-dismiss="modal" href="#" class="btn btn-primary">Atualizar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(() => {
+        $('[data-toggle="tooltip"]').tooltip();
+    })
+</script>

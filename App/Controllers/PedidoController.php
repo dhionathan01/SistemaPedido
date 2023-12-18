@@ -13,6 +13,10 @@ class PedidoController extends Action{
     }
 
     public function realizarPedido(){
+        session_start();
+        if(empty($_SESSION['id']) OR !isset($_SESSION['id']) OR  empty($_SESSION['nome']) OR !isset($_SESSION['nome'])){
+            header('Location: /?login=erro');
+        }
         extract($_POST);
         $endereco = Container::getModel('Endereco');
         $endereco->__set('cep', $cep);
@@ -47,12 +51,25 @@ class PedidoController extends Action{
         echo json_encode($data);
     }
     public function listarPedidos()
-    {
+    { session_start();
+        if(empty($_SESSION['id']) OR !isset($_SESSION['id']) OR  empty($_SESSION['nome']) OR !isset($_SESSION['nome'])){
+            header('Location: /?login=erro');
+        }
         $pedido = Container::getModel('Pedido');
         $pedidos = $pedido->getAllView();
         // Renderiza a visualização
         $this->pedidos = $pedidos;
         include("../public/components/listar_pedidos.phtml");
+    }
+    public function visualizarPedido()
+    { session_start();
+        if(empty($_SESSION['id']) OR !isset($_SESSION['id']) OR  empty($_SESSION['nome']) OR !isset($_SESSION['nome'])){
+            header('Location: /?login=erro');
+        }
+        $pedido = Container::getModel('Pedido');
+        $pedido = $pedido->getPedidoViewById($_GET['id']);
+        // Renderiza a visualização
+        include("../public/components/pedido_detalhes.phtml");
     }
 }
 ?>

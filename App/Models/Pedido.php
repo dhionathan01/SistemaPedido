@@ -73,4 +73,31 @@ class Pedido extends Model
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+    public function getPedidoViewById($id)
+    {
+        $sql = "SELECT  
+                    pedidos.id,
+                    pedidos.user_id,
+                    pedidos.endereco_id,
+                    pedidos.created_at,
+                    pedidos.updated_at,
+                    usuarios.nome,
+                    enderecos.cep,
+                    enderecos.uf,
+                    enderecos.cidade,
+                    enderecos.bairro,
+                    enderecos.rua
+                FROM
+                    pedidos
+                LEFT JOIN 
+                    usuarios ON usuarios.id = pedidos.user_id
+                LEFT JOIN
+                    enderecos ON enderecos.id = pedidos.endereco_id
+                WHERE pedidos.id=:id
+                ";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
 }

@@ -46,6 +46,11 @@
                 'controller' => 'PedidoController',
                 'action' => 'listarPedidos'
             );
+            $routes['visualizarPedido'] = array(
+                'route' => '/visualizarPedido',
+                'controller' => 'PedidoController',
+                'action' => 'visualizarPedido'
+            );
             $routes['logout'] = array(
                 'route' => '/logout',
                 'controller' => 'AuthController',

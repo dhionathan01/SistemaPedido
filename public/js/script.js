@@ -35,6 +35,17 @@ function listarPedido() {
         },
     })
 }
+function visualizarPedido(id) {
+    $.ajax({
+        url: "/visualizarPedido",
+        method: 'get',
+        data: {id:id},
+        success: (component) => {
+            $('#painel_visualizar_pedido').html(component);
+            $('#visualizarPedidoModal').modal('show');
+        },
+    })
+}
 
 function enviaPedido() {
     let user_id = $('#user_id').val();
