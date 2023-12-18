@@ -36,6 +36,7 @@ function listarPedido() {
     })
 }
 function abrirPedido(id) {
+    Swal.close();
     $.ajax({
         url: "/visualizarPedido",
         method: 'get',
@@ -148,7 +149,7 @@ function enviaPedido() {
                     Swal.fire({
                         icon: 'success',
                         title: 'Pedido Realizado com Sucesso!',
-                        html: `<a href='/exibirPedido?id=${pedidoJson.pedido.id}'> Ver Pedido!! </a>`,
+                        html: `<a href='#' onclick="abrirPedido(${pedidoJson.pedido.id})"> Ver Pedido!! </a>`,
                         confirmButtonText: 'OK'
                       });
                 })
