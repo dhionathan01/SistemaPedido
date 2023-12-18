@@ -101,7 +101,20 @@ function excluirPedido(id) {
                         title: 'Pedido pedido excluído com Sucesso!',
                         confirmButtonText: 'OK'
                       });
-               })
+                })
+                if ($('#visualizarPedidoModal').hasClass('show')) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Pedido pedido excluído com Sucesso!',
+                        confirmButtonText: 'OK'
+                    }).then((confirm) => {
+                        if (confirm.isConfirmed) {
+                            $('#visualizarPedidoModal').fadeOut(() => {
+                                $('#visualizarPedidoModal').modal('hide');
+                            });
+                          }
+                      });
+                }
             },
         })
         }
