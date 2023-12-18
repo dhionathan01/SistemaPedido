@@ -15,13 +15,8 @@ class IndexController extends Action{
                 $this->render('cadastrar');
             }
             public function registrar(){
-                echo '<pre>';
-                print_r($_POST);
-                echo '</pre>';
-                
                 extract($_POST);
                 $usuario = Container::getModel('Usuario');
-                
                 $usuario->__set('nome', $nome);
                 $usuario->__set('email', $email);
                 $usuario->__set('senha', md5($senha));

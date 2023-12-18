@@ -12,9 +12,6 @@ class PedidoController extends Action{
     }
 
     public function realizarPedido(){
-        echo '<pre>';
-        print_r($_POST);
-        echo '</pre>';
         extract($_POST);
         $endereco = Container::getModel('Endereco');
         $endereco->__set('cep', $cep);
@@ -28,11 +25,7 @@ class PedidoController extends Action{
         $pedido = Container::getModel('Pedido');
         $pedido->__set('user_id', $user_id);
         $pedido->__set('endereco_id', $endereco_id);
-        $pedido_object = $pedido->salvar();
-        echo '<pre>';
-        print_r($pedido_object);
-        echo '</pre>';
-        
+        $pedido_object = $pedido->salvar();        
     }
 }
 ?>

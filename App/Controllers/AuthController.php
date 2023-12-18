@@ -12,8 +12,6 @@
 
             $usuario->autenticar();
             if(!empty($usuario->__get('id')) AND !empty($usuario->__get('nome'))){
-                echo "Autenticado";
-
                 session_start();
                 $_SESSION['id'] = $usuario->__get('id');
                 $_SESSION['nome'] = $usuario->__get('nome');
