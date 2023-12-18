@@ -9,6 +9,10 @@ use App\Models\Pedido;
 class PedidoController extends Action{
 
     public function exibirFormulario(){
+        session_start();
+        if(empty($_SESSION['id']) OR !isset($_SESSION['id']) OR  empty($_SESSION['nome']) OR !isset($_SESSION['nome'])){
+            header('Location: /?login=erro');
+        }
         include("../public/components/realizar_pedido.phtml");
     }
 
