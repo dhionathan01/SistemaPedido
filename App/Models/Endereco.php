@@ -53,5 +53,15 @@ class Endereco extends Model
         $stmt->bindValue(':rua', $this->__get('rua'));
         $stmt->execute();
     }
+    public function deleteEnderecoById()
+    {
+        $sql = "DELETE
+                FROM
+                    enderecos
+                    WHERE id = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':id', $this->__get('id'));
+        $stmt->execute();
+    }
 }
 ?>

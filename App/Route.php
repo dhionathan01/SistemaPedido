@@ -61,6 +61,11 @@
                 'controller' => 'PedidoController',
                 'action' => 'updatePedido'
             );
+            $routes['excluirPedido'] = array(
+                'route' => '/excluirPedido',
+                'controller' => 'PedidoController',
+                'action' => 'excluirPedido'
+            );
 
             $this->setRoutes($routes);
         }

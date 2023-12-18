@@ -94,5 +94,20 @@ class PedidoController extends Action{
         $endereco = $endereco->updateEnderecoById();
        
     }
+    public function excluirPedido()
+    { 
+        session_start();
+        if(empty($_SESSION['id']) OR !isset($_SESSION['id']) OR  empty($_SESSION['nome']) OR !isset($_SESSION['nome'])){
+            header('Location: /?login=erro');
+        }
+        $pedido = Container::getModel('Pedido');
+        $endereco = Container::getModel('Endereco');
+        extract($_POST);
+        $pedido->__set('id', $id_pedido);
+        $pedido->getPedidoById();
+        $endereco->__set('id',$pedido->__get('endereco_id'));
+        $endereco->deleteEnderecoById();
+        $pedido->deletePedidoById();
+    }
 }
 ?>

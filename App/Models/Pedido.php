@@ -73,6 +73,23 @@ class Pedido extends Model
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+    public function getPedidoById()
+    {
+        $sql = "SELECT  
+                    pedidos.id,
+                    pedidos.user_id,
+                    pedidos.endereco_id,
+                    pedidos.created_at,
+                    pedidos.updated_at
+                FROM
+                    pedidos
+                WHERE pedidos.id= :id
+                ";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':id', $this->id);
+        $stmt->execute();
+        return $stmt->fetch(\PDO::FETCH_OBJ);
+    }
     public function getPedidoViewById($id)
     {
         $sql = "SELECT  
@@ -110,6 +127,17 @@ class Pedido extends Model
                 ";
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(':id', $id);
+        $stmt->execute();
+    }
+    public function deletePedidoById()
+    {
+        $sql = "DELETE 
+                FROM
+                    pedidos
+                WHERE
+                    id = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':id', $this->id);
         $stmt->execute();
     }
 }

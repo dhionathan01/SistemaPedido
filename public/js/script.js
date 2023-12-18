@@ -75,6 +75,18 @@ function updatePedido(id) {
         },
     })
 }
+function excluirPedido(id) {
+    $.ajax({
+        url: "/excluirPedido",
+        method: 'POST',
+        data: {
+            id_pedido: id
+        },
+        success: (response) => {
+           console.log(response)
+        },
+    })
+}
 
 function enviaPedido() {
     let user_id = $('#user_id').val();
