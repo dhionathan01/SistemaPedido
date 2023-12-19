@@ -28,6 +28,7 @@ class PedidoController extends Action{
         $endereco->__set('cidade', $cidade);
         $endereco->__set('bairro', $bairro);
         $endereco->__set('rua', $rua);
+        $endereco->__set('numero', $numero);
         $endereco_object = $endereco->salvar();
         $endereco_id = $endereco_object->__get('id');
 
@@ -44,6 +45,7 @@ class PedidoController extends Action{
                 'cidade'=>$endereco_object->__get('cidade'),
                 'bairro'=>$endereco_object->__get('bairro'),
                 'rua'=>$endereco_object->__get('rua'),
+                'numero'=>$endereco_object->__get('numero'),
             ],
             'pedido'=>[
                 'id'=>$pedido_object->__get('id'),
@@ -91,6 +93,7 @@ class PedidoController extends Action{
         $endereco->__set('cidade', $cidade);
         $endereco->__set('bairro', $bairro);
         $endereco->__set('rua', $rua);
+        $endereco->__set('numero', $numero);
         $endereco = $endereco->updateEnderecoById();
        
     }

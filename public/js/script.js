@@ -93,6 +93,7 @@ function updatePedido(id) {
     let cidade = $('#cidade').val();
     let bairro = $('#bairro').val();
     let rua = $('#rua').val();
+    let numero = $('#numero').val();
     $.ajax({
         url: "/updatePedido",
         method: 'POST',
@@ -103,7 +104,8 @@ function updatePedido(id) {
             uf: uf,
             cidade: cidade,
             bairro: bairro,
-            rua: rua
+            rua: rua,
+            numero:numero
         },
         success: (response) => {
            console.log(response)
@@ -164,6 +166,7 @@ function enviaPedido() {
     let cidade = $('#cidade').val();
     let bairro = $('#bairro').val();
     let rua = $('#rua').val();
+    let numero = $('#numero').val();
     if (cep != '' && cep != undefined && uf != ''&& uf != undefined) {
         $.ajax({
             url: "/realizarPedido",
@@ -174,7 +177,8 @@ function enviaPedido() {
                 uf: uf,
                 cidade: cidade,
                 bairro: bairro,
-                rua: rua
+                rua: rua,
+                numero:numero
             },
             success: (pedido) => {
                 let pedidoJson = JSON.parse(pedido);

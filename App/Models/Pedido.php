@@ -103,7 +103,8 @@ class Pedido extends Model
                     enderecos.uf,
                     enderecos.cidade,
                     enderecos.bairro,
-                    enderecos.rua
+                    enderecos.rua,
+                    enderecos.numero
                 FROM
                     pedidos
                 LEFT JOIN 

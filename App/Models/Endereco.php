@@ -11,6 +11,7 @@ class Endereco extends Model
     private $cidade;
     private $bairro;
     private $rua;
+    private $numero;
 
     public function __get($atributo){
         return $this->$atributo;
@@ -22,13 +23,14 @@ class Endereco extends Model
 
     public function salvar()
     {
-        $sql = "INSERT INTO enderecos (cep, uf, cidade, bairro, rua) VALUES (:cep, :uf, :cidade, :bairro, :rua)";
+        $sql = "INSERT INTO enderecos (cep, uf, cidade, bairro, rua, numero) VALUES (:cep, :uf, :cidade, :bairro, :rua, :numero)";
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(':cep', $this->__get('cep'));
         $stmt->bindValue(':uf', $this->__get('uf'));
         $stmt->bindValue(':cidade', $this->__get('cidade'));
         $stmt->bindValue(':bairro', $this->__get('bairro'));
         $stmt->bindValue(':rua', $this->__get('rua'));
+        $stmt->bindValue(':numero', $this->__get('numero'));
         $stmt->execute();
         $this->id = $this->db->lastInsertId();
         return $this;
@@ -43,6 +45,7 @@ class Endereco extends Model
                     cidade = :cidade,
                     bairro = :bairro,
                     rua = :rua
+                    numero = :numero
                     WHERE id = :id";
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(':id', $this->__get('id'));
@@ -51,6 +54,7 @@ class Endereco extends Model
         $stmt->bindValue(':cidade', $this->__get('cidade'));
         $stmt->bindValue(':bairro', $this->__get('bairro'));
         $stmt->bindValue(':rua', $this->__get('rua'));
+        $stmt->bindValue(':numero', $this->__get('numero'));
         $stmt->execute();
     }
     public function deleteEnderecoById()

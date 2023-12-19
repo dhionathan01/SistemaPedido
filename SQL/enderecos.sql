@@ -6,3 +6,5 @@ CREATE TABLE `sistema_pedidos_swl`.`enderecos` (
   `bairro` VARCHAR(255) NULL,
   `rua` VARCHAR(255) NULL,
   PRIMARY KEY (`id`));
+ALTER TABLE `sistema_pedidos_swl`.`enderecos` 
+ADD COLUMN `numero` VARCHAR(45) NULL AFTER `rua`;
