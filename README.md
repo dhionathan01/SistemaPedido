@@ -3,13 +3,14 @@ Introdução ao sistema de pedido SWL
 •	Cadastro de usuários
 •	Login
 •	Logout
-![tela_login](<tela de login.gif>)
-
+![Alt text](login-rapido.gif)
+![Alt text](login-mobile.gif)
 •	API de CEP
 •	Inserção de Pedidos
 •	Cálculo de envio de acordo com a opção selecionada
-![Api CEP](API-CEP.gif)
-
+![Alt text](<Integração Api CEP.gif>)
+![Alt text](<Integração Api CEP-mobile.gif>)
 •	Atualização de Pedido
+![Alt text](<Listagem pedido-update.gif>)
 •	Exclusão de Pedido
-![Alt text](<AtualizacaoExclusão de Pedido.gif>)
+![Alt text](<Delete pedido.gif>)
