@@ -151,8 +151,8 @@ class Pedido extends Model
                 SET
                     id = :id,
                     envio_id = :envio_id,
-                    valor = :valor
-                    updated_at = NOW(),
+                    valor = :valor,
+                    updated_at = NOW()
                 WHERE id=:id
                 ";
         $stmt = $this->db->prepare($sql);
