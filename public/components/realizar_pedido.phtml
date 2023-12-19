@@ -72,7 +72,6 @@
 </div>
 <script>
     $(document).on('input', '#cep', function() {
-        console.log('entrei aq')
         var valorAtual = $(this).val();
         var valorMascarado = mascaraCEP(valorAtual);
         $(this).val(valorMascarado);
