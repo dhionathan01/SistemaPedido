@@ -33,3 +33,5 @@ ADD CONSTRAINT `fk_envio_id_pedidos`
   REFERENCES `sistema_pedidos_swl`.`envios` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+ALTER TABLE `sistema_pedidos_swl`.`pedidos` 
+CHANGE COLUMN `valor` `valor` DECIMAL(10,2) NULL DEFAULT NULL ;
