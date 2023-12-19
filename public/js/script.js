@@ -99,14 +99,14 @@ function excluirPedido(id) {
                     $(`#pedido_${id}`).remove()
                     Swal.fire({
                         icon: 'success',
-                        title: 'Pedido pedido excluído com Sucesso!',
+                        title: 'Pedido excluído com sucesso!',
                         confirmButtonText: 'OK'
                       });
                 })
                 if ($('#visualizarPedidoModal').hasClass('show')) {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Pedido pedido excluído com Sucesso!',
+                        title: 'Pedido excluído com sucesso!',
                         confirmButtonText: 'OK'
                     }).then((confirm) => {
                         if (confirm.isConfirmed) {
