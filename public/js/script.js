@@ -212,7 +212,6 @@ function enviaPedido() {
                 valor: valor
             },
             success: (pedido) => {
-                console.log(pedido)
                 let pedidoJson = JSON.parse(pedido);
                 $('#produtoModal').fadeOut(() => {
                     $('button.close').trigger('click');

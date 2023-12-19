@@ -22,11 +22,7 @@ class PedidoController extends Action{
         session_start();
         if(empty($_SESSION['id']) OR !isset($_SESSION['id']) OR  empty($_SESSION['nome']) OR !isset($_SESSION['nome'])){
             header('Location: /?login=erro');
-        }
-        echo '<pre>';
-        print_r($_POST);
-        echo '</pre>';
-        
+        }        
         extract($_POST);
         $endereco = Container::getModel('Endereco');
         $endereco->__set('cep', $cep);

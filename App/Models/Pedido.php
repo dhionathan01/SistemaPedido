@@ -37,11 +37,7 @@ class Pedido extends Model
                             :endereco_id,
                             :envio_id,
                             :valor)";
-        $stmt = $this->db->prepare($sql);
-        echo '<pre>';
-        print_r($this);
-        echo '</pre>';
-        
+        $stmt = $this->db->prepare($sql);  
         $stmt->bindValue(':user_id', $this->__get('user_id'));
         $stmt->bindValue(':endereco_id', $this->__get('endereco_id'));
         $stmt->bindValue(':envio_id', $this->__get('envio_id'));
