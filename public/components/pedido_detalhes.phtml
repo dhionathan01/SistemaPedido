@@ -61,18 +61,22 @@
                             <input type="text" class="form-control" id="rua" value="<?=$pedido['rua']?>" >
                         </div>
                         <div class="form-group">
-                            <label for="rua">Numero:</label>
-                            <input type="text" class="form-control" id="rua" value="<?=$pedido['numero']?>" >
+                            <label for="numero">Numero:</label>
+                            <input type="text" class="form-control" id="numero" value="<?=$pedido['numero']?>" >
                         </div>
 
                         <div class="form-group">
                             <label for="dataPedido">Data do Pedido:</label>
                             <input type="text" class="form-control" id="dataPedido" value="<?=$pedido['created_at']?>" readonly>
                         </div>
-
                         <div class="form-group">
-                            <label for="dataAtualizacao">Última Atualização:</label>
-                            <input type="text" class="form-control" id="dataAtualizacao" value="<?=$pedido['updated_at']?>" readonly>
+                            <label for="forma_envio">Forma Envio</label>
+                            <input type="text" class="form-control" id="forma_envio" value="<?=$pedido['forma_envio']?>" readonly>
+                            <input type="hidden" name="envio_id" id="envio_id" value="<?=$pedido['envio_id']?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="valor">valor:</label>
+                            <input type="text" class="form-control" id="valor" value="<?=$pedido['valor']?>" readonly>
                         </div>
                         <div class="d-flex justify-content-between">
                             <a data-dismiss="modal" href="#" class="btn btn-sm btn-primary"><span class="fa fa-reply"></span> Voltar</a>

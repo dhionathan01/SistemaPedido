@@ -46,7 +46,7 @@
                         </div>
                         <div class="form-group">
                             <label for="envioForma">Forma de envio:</label>
-                            <select class="form-control" name="forma_envio" id="forma_envio" onchange="calcularValor(this.value)">
+                            <select class="form-control" name="envio_id" id="envio_id" onchange="calcularValor(this.value)">
                                 <option value="">Não selecionada</option>
                                 <? foreach ($envios as $envio) : ?>
                                     <option value="<?= $envio['id'] ?>"><?= $envio['tipo'] ?></option>

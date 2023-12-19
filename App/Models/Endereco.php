@@ -44,7 +44,7 @@ class Endereco extends Model
                     uf = :uf,
                     cidade = :cidade,
                     bairro = :bairro,
-                    rua = :rua
+                    rua = :rua,
                     numero = :numero
                     WHERE id = :id";
         $stmt = $this->db->prepare($sql);

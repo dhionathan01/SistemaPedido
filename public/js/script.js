@@ -94,6 +94,8 @@ function updatePedido(id) {
     let bairro = $('#bairro').val();
     let rua = $('#rua').val();
     let numero = $('#numero').val();
+    let envio_id = $('#envio_id').val();
+    let valor = $('#valor').val();
     $.ajax({
         url: "/updatePedido",
         method: 'POST',
@@ -105,10 +107,19 @@ function updatePedido(id) {
             cidade: cidade,
             bairro: bairro,
             rua: rua,
-            numero:numero
+            numero: numero,
+            envio_id: envio_id,
+            valor: valor
         },
         success: (response) => {
-           console.log(response)
+            $('#visualizarPedidoModal').fadeOut(() => {
+                $('button.close').trigger('click');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Pedido alterado com Sucesso!',
+                    confirmButtonText: 'OK'
+                  });
+            })
         },
     })
 }
@@ -179,12 +190,12 @@ function enviaPedido() {
     let bairro = $('#bairro').val();
     let rua = $('#rua').val();
     let numero = $('#numero').val();
-    let forma_envio = $('#forma_envio').val();
+    let envio_id = $('#envio_id').val();
     let valor = $('#valor').val();
 
     if (cep != '' && cep != undefined &&
         uf != '' && uf != undefined &&
-        forma_envio != '' && forma_envio != undefined &&
+        envio_id != '' && envio_id != undefined &&
         valor != '' && valor != undefined) {
         $.ajax({
             url: "/realizarPedido",
@@ -196,7 +207,9 @@ function enviaPedido() {
                 cidade: cidade,
                 bairro: bairro,
                 rua: rua,
-                numero:numero
+                numero: numero,
+                envio_id: envio_id,
+                valor: valor
             },
             success: (pedido) => {
                 let pedidoJson = JSON.parse(pedido);

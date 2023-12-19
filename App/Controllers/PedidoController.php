@@ -37,6 +37,8 @@ class PedidoController extends Action{
         $pedido = Container::getModel('Pedido');
         $pedido->__set('user_id', $user_id);
         $pedido->__set('endereco_id', $endereco_id);
+        $pedido->__set('envio_id', $envio_id);
+        $pedido->__set('valor', $valor);
         $pedido_object = $pedido->salvar();
         
         $data = array(
@@ -88,7 +90,10 @@ class PedidoController extends Action{
         $pedido = Container::getModel('Pedido');
         $endereco = Container::getModel('Endereco');
         extract($_POST);
-        $pedido = $pedido->updatePedidoById($_POST['id_pedido']);
+        $pedido->__set('id', $id_pedido);
+        $pedido->__set('envio_id', $envio_id);
+        $pedido->__set('valor', $valor);
+        $pedido = $pedido->updatePedidoById();
         $endereco->__set('id', $endereco_id);
         $endereco->__set('cep', $cep);
         $endereco->__set('uf', $uf);

@@ -23,3 +23,13 @@ ADD CONSTRAINT `fk_endereco_id_pedidos`
   REFERENCES `sistema_pedidos_swl`.`enderecos` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+
+ALTER TABLE `sistema_pedidos_swl`.`pedidos` 
+ADD COLUMN `envio_id` INT NULL AFTER `updated_at`,
+ADD COLUMN `valor` DECIMAL NULL AFTER `envio_id`,
+ADD INDEX `fk_envio_id_pedidos_idx` (`envio_id` ASC) ,
+ADD CONSTRAINT `fk_envio_id_pedidos`
+  FOREIGN KEY (`envio_id`)
+  REFERENCES `sistema_pedidos_swl`.`envios` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
