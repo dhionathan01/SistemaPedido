@@ -35,6 +35,40 @@ function listarPedido() {
         },
     })
 }
+function abrirMenuEnvio() {
+    $.ajax({
+        url: "/abrirMenuEnvio",
+        method: 'post',
+        data: {},
+        success: (component) => {
+            $('#painel_menu_envio').html(component);
+            $('#menuEnvioModal').modal('show');
+        },
+    })
+}
+
+function salvarEnvios() {
+    let tipos = $('.tipo');
+    let lista_envios = [];
+    $(tipos).each((index, element) => {
+        let envio = {
+            id: $(element).find('.campo_id').val(),
+            valor: $(element).find('.valor').val()
+        };
+        lista_envios.push(envio);
+    });
+
+    $.ajax({
+        url: "/atualizarValores",
+        method: 'post',
+        data: {lista_envios:lista_envios},
+        success: (response) => {
+           toastr.success('Valores atualizados com sucesso !')
+        },
+    })
+    
+    
+}
 function abrirPedido(id) {
     Swal.close();
     $.ajax({

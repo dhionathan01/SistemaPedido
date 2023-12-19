@@ -1,0 +1,49 @@
+<style>
+    #tabela-pedidos.tabela-pedidos {
+        max-height: 300px;
+        /* Ajuste conforme necessário */
+        overflow-y: auto;
+    }
+</style>
+<div class="modal fade" id="menuEnvioModal" tabindex="-1" role="dialog" aria-labelledby="menuEnvioModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="menuEnvioModalLabel">Menu Envios</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container mt-4">
+                    <form>
+                        <div class="form-group row">
+                            <?foreach($envios as $envio):?>
+                                <div class="input-group mb-3 col-md-6 tipo" id="<?=$envio['tipo']?>">
+                                <input type="hidden" class="campo_id" value="<?=$envio['id']?>">
+                                <input type="hidden" class="nome_campo" value="<?=$envio['tipo']?>">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon3"><?=$envio['tipo']?>:</span>
+                                    </div>
+                                    <input type="number" value="<?=$envio['valor']?>" step="0.01" inputmode="decimal" class="form-control valor" aria-describedby="basic-addon3">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="basic-addon1">R$</span>
+                                    </div>
+                                </div>
+                            <?endforeach;?>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-sm btn-primary" data-dismiss="modal"><span class="fa fa-reply"> </span> Voltar</button>
+                            <button class="btn btn-sm btn-primary" onclick="salvarEnvios()"><span class="fa fa-check"></span> Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(() => {
+
+    })
+</script>

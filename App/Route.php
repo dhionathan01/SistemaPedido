@@ -66,6 +66,16 @@
                 'controller' => 'PedidoController',
                 'action' => 'excluirPedido'
             );
+            $routes['abrirMenuEnvio'] = array(
+                'route' => '/abrirMenuEnvio',
+                'controller' => 'EnvioController',
+                'action' => 'abrirMenuEnvio'
+            );
+            $routes['atualizarValores'] = array(
+                'route' => '/atualizarValores',
+                'controller' => 'EnvioController',
+                'action' => 'atualizarValores'
+            );
 
             $this->setRoutes($routes);
         }
