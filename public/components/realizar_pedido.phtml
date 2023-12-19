@@ -11,14 +11,14 @@
                 <div class="container mt-5">
                     <form method="post" action="/realizarPedido">
                         <div class="form-group">
-                            <input type="hidden" name="user_id" value="<?=$_POST['user_id']?>">
+                            <input type="hidden" name="user_id" value="<?= $_POST['user_id'] ?>">
                             <label for="nomeCliente">Nome do Cliente</label>
-                            <input readonly type="text" class="form-control" value="<?=$_POST['nome_cliente']?>" id="nome_cliente" placeholder="Digite o nome do cliente" required>
+                            <input readonly type="text" class="form-control" value="<?= $_POST['nome_cliente'] ?>" id="nome_cliente" placeholder="Digite o nome do cliente" required>
                         </div>
                         <div class="form-group">
                             <label for="cep">CEP</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" name="cep"  maxlength="9" id="cep" placeholder="Digite o CEP" required>
+                                <input type="text" class="form-control" name="cep" maxlength="9" id="cep" placeholder="Digite o CEP" required>
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary" type="button" onclick="obterInformacoesCEP()">Preencher Endereço</button>
                                 </div>
@@ -44,6 +44,23 @@
                             <label for="numero">Número</label>
                             <input type="number" name="numero" class="form-control" id="numero" placeholder="Digite o número" required>
                         </div>
+                        <div class="form-group">
+                            <label for="envioForma">Forma de envio:</label>
+                            <select class="form-control" name="forma_envio" id="forma_envio" onchange="calcularValor(this.value)">
+                                <option value="">Não selecionada</option>
+                                <? foreach ($envios as $envio) : ?>
+                                    <option value="<?= $envio['id'] ?>"><?= $envio['tipo'] ?></option>
+                                <? endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">R$</span>
+                                </div>
+                                <input class="form-control" id="valor" type="number" step="0.01" inputmode="decilmal" readonly>
+                            </div>
+                        </div>
                         <div class="d-flex justify-content-end">
                             <button type="button" id="enviar_pedido" class="btn btn-sm btn-primary" onclick="enviaPedido()"> <span class="fa fa-check"></span> Enviar Pedido</button>
                         </div>
@@ -54,11 +71,10 @@
     </div>
 </div>
 <script>
-    $(document).on('input','#cep' ,  function () {
+    $(document).on('input', '#cep', function() {
         console.log('entrei aq')
         var valorAtual = $(this).val();
         var valorMascarado = mascaraCEP(valorAtual);
         $(this).val(valorMascarado);
     });
-
 </script>

@@ -13,18 +13,20 @@ class EnvioController extends Action {
     }
     public function atualizarValores(){
         $envio = Container::getModel('Envio');
-       
-        
         extract($_POST);
         foreach($lista_envios as $envioUni){
-            echo '<pre>';
-            print_r($envioUni);
-            echo '</pre>';
-            
             $envio->__set('id', $envioUni['id']);
             $envio->__set('valor', $envioUni['valor']);
             $envio->updated();
         }
+    }
+
+    public function getValorEnvio(){
+        $envio = Container::getModel('Envio');
+        extract($_POST);
+        $envio->__set('id', $id);
+        $envio = $envio->getById();
+        echo json_encode($envio);
     }
 }
 ?>

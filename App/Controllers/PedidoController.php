@@ -13,6 +13,8 @@ class PedidoController extends Action{
         if(empty($_SESSION['id']) OR !isset($_SESSION['id']) OR  empty($_SESSION['nome']) OR !isset($_SESSION['nome'])){
             header('Location: /?login=erro');
         }
+        $envios = Container::getModel('Envio');
+        $envios = $envios->getAll();
         include("../public/components/realizar_pedido.phtml");
     }
 

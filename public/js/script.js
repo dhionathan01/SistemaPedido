@@ -112,6 +112,18 @@ function updatePedido(id) {
         },
     })
 }
+function calcularValor(id) {
+    $.ajax({
+        url: "/getValorEnvio",
+        method: 'post',
+        data: {id:id},
+        success: (envio) => {
+            let envioJson = JSON.parse(envio);
+            $('#valor').val(envioJson[0].valor);
+        },
+    })
+}
+
 function excluirPedido(id) {
     Swal.fire({
         title: 'Você tem certeza que deseja excluir?',
@@ -167,7 +179,13 @@ function enviaPedido() {
     let bairro = $('#bairro').val();
     let rua = $('#rua').val();
     let numero = $('#numero').val();
-    if (cep != '' && cep != undefined && uf != ''&& uf != undefined) {
+    let forma_envio = $('#forma_envio').val();
+    let valor = $('#valor').val();
+
+    if (cep != '' && cep != undefined &&
+        uf != '' && uf != undefined &&
+        forma_envio != '' && forma_envio != undefined &&
+        valor != '' && valor != undefined) {
         $.ajax({
             url: "/realizarPedido",
             method: "POST",

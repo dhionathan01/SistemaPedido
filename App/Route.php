@@ -76,6 +76,11 @@
                 'controller' => 'EnvioController',
                 'action' => 'atualizarValores'
             );
+            $routes['getValorEnvio'] = array(
+                'route' => '/getValorEnvio',
+                'controller' => 'EnvioController',
+                'action' => 'getValorEnvio'
+            );
 
             $this->setRoutes($routes);
         }
