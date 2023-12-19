@@ -1,22 +1,22 @@
     <link rel="stylesheet" href="css/menu_principal.css">
     <nav class="navbar navbar-expand-lg navbar-primary bg-primary">
-        <a class="navbar-brand" href="#"><span class="text-light">SWL</span></a>
+        <a class="navbar-brand text-light" href="#"><span class="text-light fa fa-circle-o-notch"></span> SWL</a>
 
         <!-- Botão de hamburguer para telas pequenas -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="fa fa-bars"></span>
         </button>
 
         <!-- Itens do Navbar -->
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <!-- Adicione seus outros itens do Navbar aqui -->
-                <li class="nav-item">
-                    <a class="class btn btn-light" href="/menu_principal">Home</a>
+                <li class="nav-item m-1">
+                    <a class="class  text-light" href="/menu_principal"><span class="fa fa-home"></span> Home</a>
                 </li>
                 <!-- Botão de deslogar -->
-                <li class="nav-item ml-2">
-                    <a class="btn btn-light" href="/logout">Deslogar</a>
+                <li class="nav-item m-1">
+                    <a class="text-light" href="/logout"><span class="fa fa-power-off"></span> Logout</a>
                 </li>
             </ul>
         </div>
@@ -52,7 +52,7 @@
                         <i class="fas fa-truck icon text-white"></i>
                     </div>
                     <div class="card-body text-center">
-                        <a href="#" class="btn btn-primary" onclick="menuPrecos()">Menu Envios</a>
+                        <a href="#" class="btn btn-primary" onclick="abrirMenuEnvio()">Menu Envios</a>
                     </div>
                 </div>
             </div>
@@ -66,4 +66,6 @@
         <div id="painel_visualizar_pedido">
 
         </div>
+
+        <div id="painel_menu_envio"></div>
     </div>
